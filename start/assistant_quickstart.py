@@ -5,7 +5,7 @@ import os
 import time
 import json
 
-from app.services.email_service import enviar_correo
+from ..app.services.email_service import enviar_correo
 
 load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -105,7 +105,7 @@ def run_assistant(thread,wa_id):
 # Test assistant
 # --------------------------------------------------------------
 
-new_message = generate_response("Si", "12233", "Santi")
+new_message = generate_response("Hola", "123", "Santi")
 
 # new_message = generate_response("What's the pin for the lockbox?", "456", "Sarah")
 

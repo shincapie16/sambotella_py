@@ -57,18 +57,6 @@ def run_assistant(thread, name,wa_id):
         # instructions=f"You are having a conversation with {name}",
     )
 
-    if run.status == "requires_action":
-        tools_to_call = run.required_action.submit_tool_outputs.tool_calls
-        if (tools_to_call[0].function.name == 'enviar_correo'):
-            enviado = enviar_correo(tools_to_call[0].function.arguments,wa_id)
-        tools_outputs_array = [({"tool_call_id": tools_to_call[0].id, "output": enviado})]
-
-        run = client.beta.threads.runs.create(
-            thread_id=thread.id,
-            assistant_id=assistant.id,
-            tools_outputs=tools_outputs_array
-        )
-
     while run.status != "completed":
         # Be nice to the API
         time.sleep(0.5)
