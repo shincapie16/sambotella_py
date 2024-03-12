@@ -9,7 +9,7 @@ load_dotenv()
 def enviar_correo(pedido,numero):
     email_sender = os.getenv("EMAIL")
     email_password = os.getenv("EMAIL_PASSWORD")
-    email_receiver = "shincapie1606@gmail.com"
+    email_receiver = os.getenv("EMAIL_SENDER")
     subject = "Pedido del numero: {}".format(numero)
     
     productos = pedido.get("pedido").get("productos")
